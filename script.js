@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			const seconds = String(now.getSeconds()).padStart(2, '0');
 			terminalLine.textContent = `${hours}:${minutes}:${seconds} iker @ ~ $`;
 		};
-			updateTime();
+		updateTime();
 		setInterval(updateTime, 1000);
 	}
 
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	if (titleEl) {
 		const text = 'IkerLopDev - Personal Site';
 		let idx = 0;
-		
+
 		const typeChar = () => {
 			if (idx < text.length) {
 				titleEl.textContent += text[idx];
@@ -44,7 +44,22 @@ document.addEventListener('DOMContentLoaded', () => {
 				setTimeout(typeChar, 100);
 			}
 		};
-		
+
 		typeChar();
+	}
+
+	// Horizontal scroll for certifications
+	const certList = document.getElementById('certificationsList');
+	const leftBtn = document.getElementById('scrollLeft');
+	const rightBtn = document.getElementById('scrollRight');
+
+	if (certList && leftBtn && rightBtn) {
+		leftBtn.addEventListener('click', () => {
+			certList.scrollBy({ left: -200, behavior: 'smooth' });
+		});
+
+		rightBtn.addEventListener('click', () => {
+			certList.scrollBy({ left: 200, behavior: 'smooth' });
+		});
 	}
 });
